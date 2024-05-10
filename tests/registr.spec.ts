@@ -1,12 +1,17 @@
 import { test, expect } from '@playwright/test';
-
+import { RegisterButton } from '../page-objects/components/RegisterButton';
+import { RegisterPOM } from '../page-objects/forms/registerPOM';
 test.describe('All tests', () => {
+  let registerButton: RegisterButton;
+  let registerPOM: RegisterPOM;
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: 'Sign up' }).click();
+    registerButton = new RegisterButton(page);
+    registerPOM = new RegisterPOM(page);
   });
   test('Successful registration with valid data', async ({ page }) => {
-    await page.locator('#signupName').fill('Oleg');
+     
     await page.locator('#signupLastName').fill('Kumogorodskyy');
     await page.getByLabel('Email').fill('kyym13+aqe6@gmail.com');
     await page.getByLabel('Password', { exact: true }).fill('Qa12345678');
