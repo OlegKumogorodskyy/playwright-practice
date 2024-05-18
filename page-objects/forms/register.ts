@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
-export class RegisterPOM {
+export class Register {
     readonly page: Page;
     readonly signUpButton: Locator;
     readonly nameInput: Locator;
@@ -39,6 +39,14 @@ export class RegisterPOM {
         await this.passwordInput.fill(password);
         await this.reEnterPasswordInput.fill(reenterPassword);
         await this.registerButton.click();
+    }
+
+    async buttonIsDisabled(name: string, lastName: string, email: string, password: string, reenterPassword: string) {
+        await this.nameInput.fill(name);
+        await this.lastNameInput.fill(lastName);
+        await this.emailInput.fill(email);
+        await this.passwordInput.fill(password);
+        await this.reEnterPasswordInput.fill(reenterPassword);
     }
 
     async submitRegistration() {
