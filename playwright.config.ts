@@ -1,10 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
-
+import dotenv from 'dotenv'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+dotenv.config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -24,15 +24,15 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://qauto.forstudy.space',
+    baseURL: process.env.BASE_URL,
+
+     httpCredentials: {
+      username: process.env.HTTP_USER_NAME ?? 'test',
+      password: process.env.HTTP_PASSWORD ?? 'test',
+    },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    httpCredentials: {
-      username: "guest",
-      password: "welcome2qauto",
-    },
-    testIdAttribute: "data-test",
   },
 
   /* Configure projects for major browsers */
@@ -42,15 +42,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
