@@ -16,17 +16,17 @@ test.describe('All tests', () => {
     await expect(page.getByRole('heading')).toContainText('Garage');
   });
 
-  test.afterAll('Delete user after successful registration', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    await page.getByLabel('Email').fill('kyym13+aqe6@gmail.com');
-    await page.getByLabel('Password').fill('Qa12345678');
-    await page.getByRole('button', { name: 'Login' }).click();
-    await page.getByRole('button', { name: 'User photo My profile' }).click();
-    await page.getByRole('link', { name: 'Settings', exact: true }).click();
-    await page.getByRole('button', { name: 'Remove my account' }).click();
-    await page.getByRole('button', { name: 'Remove' }).click();
-  });
+  // test.afterAll('Delete user after successful registration', async ({ page }) => {
+  //   await page.goto('/');
+  //   await page.getByRole('button', { name: 'Sign In' }).click();
+  //   await page.getByLabel('Email').fill('kyym13+aqe6@gmail.com');
+  //   await page.getByLabel('Password').fill('Qa12345678');
+  //   await page.getByRole('button', { name: 'Login' }).click();
+  //   await page.getByRole('button', { name: 'User photo My profile' }).click();
+  //   await page.getByRole('link', { name: 'Settings', exact: true }).click();
+  //   await page.getByRole('button', { name: 'Remove my account' }).click();
+  //   await page.getByRole('button', { name: 'Remove' }).click();
+  // });
 
   test.describe('Field: Name', () => {
     let register: Register;
