@@ -41,7 +41,7 @@ export class GaragePage {
         this.closeIcon = page.locator('.close');
         this.logoAudi = page.locator('div .car-logo_img');
     }
-    
+
 
     async open() {
         const signInForm = new SignInForm(this.page);
@@ -52,7 +52,7 @@ export class GaragePage {
 
     async clickCloseIcon() {
         await this.closeIcon.click();
-     }
+    }
 
     async clickEditCarDate() {
         await this.editCarDate.click();
@@ -93,7 +93,7 @@ export class GaragePage {
 
     }
 
-   
+
 
     async getFirstCarName() {
         return this.firstCarName;

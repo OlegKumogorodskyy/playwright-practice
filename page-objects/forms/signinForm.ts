@@ -23,7 +23,7 @@ export class SignInForm {
     }
 
     async open() {
-       await this.clickSignUpButton();
+        await this.clickSignUpButton();
         await expect(this.formHeader).toBeVisible();
 
     }

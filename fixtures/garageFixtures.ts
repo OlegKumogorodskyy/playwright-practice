@@ -12,5 +12,5 @@ export const test = base.extend({
         await use(garagePage);
         await garagePage.removeLastCar();
     },
-   
+
 });
