@@ -4,6 +4,7 @@ import { test } from '../fixtures/garageFixtures';
 test.describe('Garage tests', () => {
 
     test.describe('Tests with [Audi] [A8]', () => {
+        
         test('Add [Audi] [A8] car to the garage', async ({ garagePageAsUser }) => {
             await garagePageAsUser.selectBrand('Audi');
             await garagePageAsUser.selectModel('A8');

@@ -18,12 +18,12 @@ export class SignInForm {
         this.errorMessageBox = page.locator('.alert-danger');
         this.formHeader = page.getByRole('heading', { name: 'Log in' });
     }
-    async clickSignUpButton() {
+    async clickSignInButton() {
         await this.signInButton.click();
     }
 
     async open() {
-        await this.clickSignUpButton();
+        await this.clickSignInButton();
         await expect(this.formHeader).toBeVisible();
 
     }

@@ -42,9 +42,11 @@ export class GaragePage {
         this.logoAudi = page.locator('div .car-logo_img');
     }
 
-
     async open() {
         await this.page.goto('/panel/garage');
+    }
+
+    async openAsLoggedUser(email: string, password: string) {
         const signInForm = new SignInForm(this.page);
         await signInForm.open();
         await signInForm.loginWithCredentials(correctEmail, correctPassword);

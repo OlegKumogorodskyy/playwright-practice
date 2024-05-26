@@ -1,22 +1,16 @@
-import { test, expect, chromium } from '@playwright/test';
-import { SignInForm } from '../../page-objects/forms/signinForm';
-import { correctEmail, correctPassword } from '../../test-data/credentials';
+import { test, expect } from '@playwright/test';
+import { GaragePage } from '../../page-objects/pages/garagePage';
+import { correctEmail, correctPassword } from '../../test-data/credentials'
 
-test('Login and save storage state', async () => {
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    const signInForm = new SignInForm(page);
+test.describe('Garage tests with POM', () => {
+    let garagePage: GaragePage;
 
-    await page.goto('/'); 
-    await signInForm.open();
-    await signInForm.loginWithCredentials(correctEmail, correctPassword);
-
-    
-    await expect(page.locator('h1')).toHaveText('Garage');
-
-    await context.storageState({ path: 'storageState.json' });
-
-    await browser.close();
-});
-
+    test('Login As User1 and save state', async ({ page }) => {
+        garagePage = new GaragePage(page);
+        await page.goto('/');
+        await garagePage.openAsLoggedUser(correctEmail, correctPassword);
+        await page.context().storageState({
+            path: './test-data/states/userOneState.json'
+        })
+    })
+})
