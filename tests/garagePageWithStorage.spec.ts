@@ -18,7 +18,7 @@ test.describe('Garage tests', () => {
             await garagePage.removeLastCar();
         })
     
-        test('@smoke Add [Audi] [A8] car to the garage', async () => {
+        test(' Add [Audi] [A8] car to the garage', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -26,7 +26,7 @@ test.describe('Garage tests', () => {
             await expect(garagePage.firstCarName).toHaveText('Audi A8');
         });
 
-        test('@smoke Сhange creation date', async () => {
+        test(' Сhange creation date', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -35,7 +35,7 @@ test.describe('Garage tests', () => {
             await expect(garagePage.updateMileageField).toBeVisible();
         })
 
-        test('@smoke Change model car', async () => {
+        test(' Change model car', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -46,7 +46,7 @@ test.describe('Garage tests', () => {
             await expect(garagePage.firstCarName).toHaveText('Audi TT');
         })
 
-        test('@smoke Change brand car', async () => {
+        test(' Change brand car', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -58,7 +58,7 @@ test.describe('Garage tests', () => {
             await expect(garagePage.firstCarName).toHaveText('BMW X5');
         })
 
-        test('@smoke Check mileage field', async () => {
+        test(' Check mileage field', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -70,7 +70,7 @@ test.describe('Garage tests', () => {
             await garagePage.clickCloseIcon();
         })
 
-        test('@smoke Logo Audi', async () => {
+        test(' Logo Audi', async () => {
             await garagePage.selectBrand('Audi');
             await garagePage.selectModel('A8');
             await garagePage.enterMileage('222');
@@ -79,7 +79,7 @@ test.describe('Garage tests', () => {
         })
 
     
-    test('@smoke Add [BMW] [X5] car to the garage', async () => {
+    test(' Add [BMW] [X5] car to the garage', async () => {
         await garagePage.selectBrand('BMW');
         await garagePage.selectModel('X5');
         await garagePage.enterMileage('666');
@@ -87,7 +87,7 @@ test.describe('Garage tests', () => {
         await expect(garagePage.firstCarName).toHaveText('BMW X5');
     })
 
-    test('@smoke Add [Ford] [Fiesta] car to the garage', async () => {
+    test(' Add [Ford] [Fiesta] car to the garage', async () => {
         await garagePage.selectBrand('Ford');
         await garagePage.selectModel('Fiesta');
         await garagePage.enterMileage('999');
@@ -95,7 +95,7 @@ test.describe('Garage tests', () => {
         await expect(garagePage.firstCarName).toHaveText('Ford Fiesta');
     })
 
-    test('@smoke Add [Ford] [Focus] car to the garage', async () => {
+    test(' Add [Ford] [Focus] car to the garage', async () => {
         await garagePage.selectBrand('Ford');
         await garagePage.selectModel('Focus');
         await garagePage.enterMileage('888');
@@ -103,7 +103,7 @@ test.describe('Garage tests', () => {
         await expect(garagePage.firstCarName).toHaveText('Ford Focus');
     })
 
-    test('@smoke Add [Porsche] [911] car to the garage', async () => {
+    test(' Add [Porsche] [911] car to the garage', async () => {
         await garagePage.selectBrand('Porsche');
         await garagePage.selectModel('911');
         await garagePage.enterMileage('777');
