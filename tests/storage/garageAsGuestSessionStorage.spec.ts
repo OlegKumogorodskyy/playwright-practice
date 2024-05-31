@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../fixtures/fuelExpensesFixtures'
+import { test } from '../../fixtures/fuelExpensesFixtures'
 
 test.describe('Garage tests in guest mode using Session Storage', () => {
     test('Session Storage is empty by default', async ({ page }) => {

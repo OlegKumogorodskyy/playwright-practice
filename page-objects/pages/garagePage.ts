@@ -20,6 +20,7 @@ export class GaragePage {
     readonly acceptCarRemovingButton: Locator;
     readonly closeIcon: Locator;
     readonly logoAudi: Locator;
+    readonly profileLink: Locator;
 
 
     constructor(page: Page) {
@@ -40,10 +41,12 @@ export class GaragePage {
         this.acceptCarRemovingButton = page.locator('.btn-danger');
         this.closeIcon = page.locator('.close');
         this.logoAudi = page.locator('div .car-logo_img');
+        this.profileLink = page.locator('a.btn.btn-white.btn-sidebar.sidebar_btn.-profile');
+
     }
 
     async open() {
-        await this.page.goto('/panel/garage');
+        await this.page.goto('/');
     }
 
     async openAsLoggedUser(email: string, password: string) {
@@ -51,6 +54,11 @@ export class GaragePage {
         await signInForm.open();
         await signInForm.loginWithCredentials(correctEmail, correctPassword);
         await expect(this.page.locator('h1')).toHaveText('Garage');
+    }
+
+    async clickProfileLink() {
+        await this.profileLink.click();
+        await expect(this.page.locator('h1')).toHaveText('Profile');
     }
 
     async clickCloseIcon() {

@@ -1,6 +1,6 @@
 import { test, expect, Page, chromium } from '@playwright/test';
-import { GaragePage } from '../page-objects/pages/garagePage';
-import { correctEmail, correctPassword } from '../test-data/credentials';
+import { GaragePage } from '../../page-objects/pages/garagePage';
+import { correctEmail, correctPassword } from '../../test-data/credentials';
 
 test.describe('Garage tests', () => {
 
