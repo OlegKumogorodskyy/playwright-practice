@@ -50,7 +50,8 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         const getModelRequest = await request.get(`/api/cars/models?carBrandId=${carBrands.bmw.id}`);
         const getModelRequestJson = await getModelRequest.json();
         const models = getModelRequestJson.data;
-        
+        const mileage = Math.floor(Math.random() * 200);
+
         for (const model of models) {
             const createCarRequest = await request.post('api/cars', {
                 headers: {
@@ -59,11 +60,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 data: {
                     "carBrandId": carBrands.bmw.id,
                     "carModelId": model.id,
-                    "mileage": Math.floor(Math.random() * 200)
+                    "mileage": mileage
                 }
             });
 
-            console.log(await createCarRequest.json()); 
+            console.log(await createCarRequest.json());
         }
     });
 
@@ -71,7 +72,8 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         const getModelRequest = await request.get(`/api/cars/models?carBrandId=${carBrands.audi.id}`);
         const getModelRequestJson = await getModelRequest.json();
         const models = getModelRequestJson.data;
-        
+        const mileage = Math.floor(Math.random() * 200);
+
         for (const model of models) {
             const createCarRequest = await request.post('api/cars', {
                 headers: {
@@ -80,11 +82,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 data: {
                     "carBrandId": carBrands.audi.id,
                     "carModelId": model.id,
-                    "mileage": Math.floor(Math.random() * 200)
+                    "mileage": mileage
                 }
             });
 
-            console.log(await createCarRequest.json()); 
+            console.log(await createCarRequest.json());
         }
     });
 
@@ -92,7 +94,8 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         const getModelRequest = await request.get(`/api/cars/models?carBrandId=${carBrands.ford.id}`);
         const getModelRequestJson = await getModelRequest.json();
         const models = getModelRequestJson.data;
-        
+        const mileage = Math.floor(Math.random() * 200);
+
         for (const model of models) {
             const createCarRequest = await request.post('api/cars', {
                 headers: {
@@ -101,11 +104,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 data: {
                     "carBrandId": carBrands.ford.id,
                     "carModelId": model.id,
-                    "mileage": Math.floor(Math.random() * 200)
+                    "mileage": mileage
                 }
             });
 
-            console.log(await createCarRequest.json()); 
+            console.log(await createCarRequest.json());
         }
     });
 
@@ -113,7 +116,8 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         const getModelRequest = await request.get(`/api/cars/models?carBrandId=${carBrands.porsche.id}`);
         const getModelRequestJson = await getModelRequest.json();
         const models = getModelRequestJson.data;
-        
+        const mileage = Math.floor(Math.random() * 200);
+
         for (const model of models) {
             const createCarRequest = await request.post('api/cars', {
                 headers: {
@@ -122,11 +126,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 data: {
                     "carBrandId": carBrands.porsche.id,
                     "carModelId": model.id,
-                    "mileage": Math.floor(Math.random() * 200)
+                    "mileage": mileage
                 }
             });
 
-            console.log(await createCarRequest.json()); 
+            console.log(await createCarRequest.json());
         }
     });
 
@@ -134,7 +138,8 @@ test.describe('Garage API tests with auth in beforeAll', () => {
         const getModelRequest = await request.get(`/api/cars/models?carBrandId=${carBrands.fiat.id}`);
         const getModelRequestJson = await getModelRequest.json();
         const models = getModelRequestJson.data;
-        
+        const mileage = Math.floor(Math.random() * 200);
+
         for (const model of models) {
             const createCarRequest = await request.post('api/cars', {
                 headers: {
@@ -143,11 +148,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 data: {
                     "carBrandId": carBrands.fiat.id,
                     "carModelId": model.id,
-                    "mileage": Math.floor(Math.random() * 200)
+                    "mileage": mileage
                 }
             });
 
-            console.log(await createCarRequest.json()); 
+            console.log(await createCarRequest.json());
         }
     });
 
@@ -164,7 +169,7 @@ test.describe('Garage API tests with auth in beforeAll', () => {
             }
         });
 
-        expect(createCarRequest.status()).toBe(400); 
+        expect(createCarRequest.status()).toBe(400);
     });
 
     test('Negative: Add car with invalid carModelId', async ({ request }) => {
@@ -179,7 +184,7 @@ test.describe('Garage API tests with auth in beforeAll', () => {
             }
         });
 
-        expect(createCarRequest.status()).toBe(400); 
+        expect(createCarRequest.status()).toBe(400);
     });
 
     test('Negative: Add car without mileage', async ({ request }) => {
@@ -194,7 +199,7 @@ test.describe('Garage API tests with auth in beforeAll', () => {
             }
         });
 
-        expect(createCarRequest.status()).toBe(400); 
+        expect(createCarRequest.status()).toBe(400);
     });
 
     test('Negative: Add car without authentication', async ({ request }) => {
@@ -206,7 +211,7 @@ test.describe('Garage API tests with auth in beforeAll', () => {
             }
         });
 
-        expect(createCarRequest.status()).toBe(401); 
+        expect(createCarRequest.status()).toBe(401);
     });
 
     test('Negative: Add car with high mileage', async ({ request }) => {
@@ -217,11 +222,11 @@ test.describe('Garage API tests with auth in beforeAll', () => {
             data: {
                 "carBrandId": carBrands.bmw.id,
                 "carModelId": 1,
-                "mileage": 1000000 
+                "mileage": 1000000
             }
         });
 
-        expect(createCarRequest.status()).toBe(400); 
+        expect(createCarRequest.status()).toBe(400);
     });
 });
 
