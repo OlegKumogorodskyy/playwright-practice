@@ -64,7 +64,9 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 }
             });
 
+            const createCarRequestJson = await createCarRequest.json();
             console.log(await createCarRequest.json());
+            expect(createCarRequestJson.data.carModelId).toEqual(model.id);
         }
     });
 
@@ -85,8 +87,9 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                     "mileage": mileage
                 }
             });
-
+            const createCarRequestJson = await createCarRequest.json();
             console.log(await createCarRequest.json());
+            expect(createCarRequestJson.data.carModelId).toEqual(model.id);
         }
     });
 
@@ -108,7 +111,9 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 }
             });
 
+            const createCarRequestJson = await createCarRequest.json();
             console.log(await createCarRequest.json());
+            expect(createCarRequestJson.data.carModelId).toEqual(model.id);
         }
     });
 
@@ -130,7 +135,9 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 }
             });
 
+            const createCarRequestJson = await createCarRequest.json();
             console.log(await createCarRequest.json());
+            expect(createCarRequestJson.data.carModelId).toEqual(model.id);
         }
     });
 
@@ -152,7 +159,9 @@ test.describe('Garage API tests with auth in beforeAll', () => {
                 }
             });
 
+            const createCarRequestJson = await createCarRequest.json();
             console.log(await createCarRequest.json());
+            expect(createCarRequestJson.data.carModelId).toEqual(model.id);
         }
     });
 
