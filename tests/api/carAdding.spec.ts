@@ -29,20 +29,24 @@ test.describe('Garage API tests with auth in beforeAll', () => {
 
     })
 
-    test.afterAll(async ({ request }) => {
-        const carsRequest = await request.get('/api/cars', {
+    test.afterAll('Delete all cars', async ({ request }) => {
+        const responseCars = await request.get('/api/cars', {
             headers: {
                 'Cookie': `sid=${sid}`
             }
         });
-        const cars = await carsRequest.json();
 
-        for (const car of cars.data) {
-            await request.delete(`/api/cars/${car.id}`, {
+        const responseCarsJson = await responseCars.json();
+        const cars = responseCarsJson.data;
+
+        for (const car of cars) {
+           const responseDeleteCar = await request.delete(`/api/cars/${car.id}`, {
                 headers: {
                     'Cookie': `sid=${sid}`
                 }
             });
+
+            console.log(await responseDeleteCar.json());
         }
     });
 
