@@ -1,4 +1,4 @@
-import generateRandomEmail from "../generateRandomEmail";
+import generateRandomEmail from "../utils/generateRandomEmail";
 
 // export const users = {
 //     mainUser: {
