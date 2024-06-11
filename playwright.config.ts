@@ -37,10 +37,42 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    
     {
-      name: 'chromium',
+      name: 'setup',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: '*setup/*.spec.ts'
     },
+
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    //   dependencies: ['setup']
+    // },
+    {
+      name: 'storage',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'],
+      testMatch: '*tests/storage/*.spec.ts'
+    },
+    {
+      name: 'default',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '*tests/*.spec.ts'
+    },
+
+    {
+      name: 'ui-tests',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'],
+    },
+
+    {
+      name: 'api-tests',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '*test/api/*.spec.ts'
+    },
+
 
     // {
     //   name: 'firefox',

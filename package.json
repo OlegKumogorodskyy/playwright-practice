@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:run": "npx playwright test",
+    "test:run-api": "npx playwright test --project=api-tests",
+
+    "test:report": "npx playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,6 +17,7 @@
     "@types/node": "^20.12.7"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "uuid": "^9.0.1"
   }
 }
