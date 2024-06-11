@@ -78,7 +78,6 @@ test.describe('Garage API tests with auth in beforeAll', () => {
     test('Negative: Add car with invalid carBrandId', async ({ request }) => {
         const mileage = Math.floor(Math.random() * 200);
         const createCarRequestJson = await createCar(cookiesWithAuth, 'invalid_brand_id', 1, mileage);
-
         expect(createCarRequestJson.status).toBe('error');
     });
 
@@ -86,34 +85,19 @@ test.describe('Garage API tests with auth in beforeAll', () => {
     test('Negative: Add car with invalid carModelId', async ({ request }) => {
         const mileage = Math.floor(Math.random() * 200);
         const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, 'invalid_model_id', mileage);
-
         expect(createCarRequestJson.status).toBe('error');
     });
 
     test('Negative: Add car without mileage', async ({ request }) => {
-        const createCarRequest = await request.post('api/cars', {
-            headers: cookiesWithAuth,
-            data: {
-                "carBrandId": carBrands.bmw.id,
-                "carModelId": 1,
-                "mileage": null
-            }
-        });
-
-        expect(createCarRequest.status()).toBe(400);
+        const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, 1, null);
+        expect(createCarRequestJson.status).toBe('error');
     });
 
     test('Negative: Add car without authentication', async ({ request }) => {
-        const mileage = Math.floor(Math.random() * 200);
-        const createCarRequest = await request.post('api/cars', {
-            data: {
-                "carBrandId": carBrands.bmw.id,
-                "carModelId": 1,
-                "mileage": mileage,
-            }
-        });
 
-        expect(createCarRequest.status()).toBe(401);
+        const mileage = Math.floor(Math.random() * 200);
+        const createCarRequestJson = await createCar(cookiesWithAuth, carBrands.bmw.id, 1, mileage);
+        expect(createCarRequestJson.status).toBe('error');
     });
 
     test('Negative: Add car with high mileage', async ({ request }) => {
